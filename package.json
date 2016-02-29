@@ -1,0 +1,13 @@
+{
+	"name": "nodeIntro",
+	"version": "0.0.1",
+	"description": "Exposure to node",
+	"author": {
+		"name": "Andrew Lobban",
+		"email": "andrewglobban@gmail.com",
+		"url": "http://www.clashere.com"
+	},
+	"dependencies": {
+		"express": "*"
+	}
+}
