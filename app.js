@@ -26,6 +26,28 @@ var root = __dirname,
 
 app.use( express.static( root + "/public" ));
 
+/** Create some Express routes **/
+
+app.get( "/hello", function helloCallback (req, res) {
+
+	res.send( "Why, hello there!" );
+
+});
+
+app.get( "/someJSON", function someJSONCallback (req, res) {
+	res.json({
+		"one": {
+			"so": "cool"
+		},
+		"two": "super cool",
+		"three": ["love","json","and","JavaScript"]
+	});
+});
+
+app.get( "/beginning", function beginningCallback (req, res) {
+	res.send("<h1>This is the beginning</h1><p><3</p>" );
+});
+
 /** start server on port 3000 **/
 
 app.listen( port, function listenCallback () {
