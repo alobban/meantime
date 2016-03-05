@@ -33,12 +33,19 @@ app.set( "view engine", "jade" );
 
 /** Create some Express routes **/
 
-app.get( "/jade_test", function jade_testCallback (req, res) {
+app.get( "/settings/profile", function editProfileCb (req, res) {
 
-	// res.send( "Why, hello there!" );
+	res.render( "profile-form" );
 
-	res.render( "test" );
+});
 
+app.post("/settings/profile", function postProfileCb (req, res) {
+
+	console.log( "POST RECEIVED!" );
+
+	res.json({
+		"status": "Post received!"
+	})
 });
 
 app.get( "/someJSON", function someJSONCallback (req, res) {
