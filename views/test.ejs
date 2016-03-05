@@ -7,10 +7,22 @@
 <body>
 	
 	<%
-		var title = "My EJS Test";
+		var title = "My EJS Page";
+
+		// name array
+
+		var names = [ "Jason", "Tamara", "Andrew", "Shannon", "Roger", "Melinda" ];
+
+		// generate random number to choose a name
+
+		var random = Math.floor(Math.random() * names.length);
+
+		// pull random name
+
+		var name = names[random];
 	%>
 
 	<h1><%= title %></h1>
-	<p>let's test this out.</p>
+	<p>Hello, my name is <%= name %></p>
 </body>
 </html>
