@@ -22,3 +22,15 @@ html
 
 		p Hello, my name is 
 			strong #{ name }
+
+		p Something conditional.
+
+		p For the record, my name has 
+
+			if ( name.length >= 6 )
+
+				span 6 or more letters
+				
+			else
+
+				span less than 6 letters
