@@ -23,6 +23,20 @@ html
 
 				div( class = "panel-body" )
 
+					- // name fields
+
+					div( class = "nameField pull-left" )
+
+						label( for = "firstNameField" ) First Name
+
+						input( type = "text", class = "form-control input-lg", placeholder = "First Name", name = "firstNameField" )
+
+					div( class = "nameField pull-right" )
+
+						label( for = "lastNameField" ) Last Name
+
+						input( type = "text", class = "form-control input-lg", placeholder = "Last Name", name = "lastNameField" )
+
 					- // edit profile form
 
 					form( action = "/settings/profile", method = "post" )
