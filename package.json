@@ -10,6 +10,7 @@
 	"dependencies": {
 		"express": "*",
 		"jade": "*",
-		"connect": "*"
+		"connect": "*",
+		"body-parser": "*"
 	}
 }
