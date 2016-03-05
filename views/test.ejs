@@ -23,9 +23,9 @@
 	%>
 
 	<h1><%= title %></h1>
-	<p>Hello, my name is <%= name %></p>
-	<p>Smething conditional.</p>
-	<p>for the record my name has </p>
+	<p>Hello, my name is <b><%= name %></b></p>
+	<p>Something conditional.</p>
+	<p>for the record my name has
 	<% if ( name.length >= 6 ) { %>
 
 		<span>6 or more letters</span>
@@ -33,5 +33,6 @@
 	<% } else { %>
 		<span>less than 6 letters</span>
 	<% } %>
+	</p>
 </body>
 </html>
