@@ -10,7 +10,7 @@
 /** require modules **/
 
 var express = require("express"),
-	ejs = require("ejs");
+	jade = require("jade");
 
 /** Initialize Express app object **/
 
@@ -29,11 +29,11 @@ app.use( express.static( root + "/public" ));
 
 app.set( "views", root + "/views" );
 
-app.set( "view engine", "ejs" );
+app.set( "view engine", "jade" );
 
 /** Create some Express routes **/
 
-app.get( "/ejs_test", function ejs_testCallback (req, res) {
+app.get( "/jade_test", function jade_testCallback (req, res) {
 
 	// res.send( "Why, hello there!" );
 

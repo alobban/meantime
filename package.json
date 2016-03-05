@@ -9,6 +9,6 @@
 	},
 	"dependencies": {
 		"express": "*",
-		"ejs": "*"
+		"jade": "*"
 	}
 }
