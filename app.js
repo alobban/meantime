@@ -9,7 +9,8 @@
 
 /** require modules **/
 
-var express = require("express");
+var express = require("express"),
+	ejs = require("ejs");
 
 /** Initialize Express app object **/
 
@@ -26,11 +27,17 @@ var root = __dirname,
 
 app.use( express.static( root + "/public" ));
 
+app.set( "views", root + "/views" );
+
+app.set( "view engine", "ejs" );
+
 /** Create some Express routes **/
 
-app.get( "/hello", function helloCallback (req, res) {
+app.get( "/ejs_test", function ejs_testCallback (req, res) {
 
-	res.send( "Why, hello there!" );
+	// res.send( "Why, hello there!" );
+
+	res.render( "test" );
 
 });
 

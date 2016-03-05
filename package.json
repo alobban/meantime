@@ -8,6 +8,7 @@
 		"url": "http://www.clashere.com"
 	},
 	"dependencies": {
-		"express": "*"
+		"express": "*",
+		"ejs": "*"
 	}
 }
