@@ -1,0 +1,24 @@
+doctype html
+
+html
+
+	head
+
+		title Jade Test
+
+	body
+
+		- var title = "My Jade Page";
+		- // names array
+		- var names = [ "Jason", "Tamara", "Andrew", "Shannon", "Roger", "Melinda" ];
+
+		- // generate random number
+		- var random = Math.floor(Math.random() * names.length);
+		
+		- // pull random name
+		- var name = names[random];
+
+		h1 #{ title }
+
+		p Hello, my name is 
+			strong #{ name }
