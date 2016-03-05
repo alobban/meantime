@@ -3,9 +3,32 @@
 * @author Andrew Lobban <andrewglobban@gmail.com>
 **/
 
+/** Bootstrap **/
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css");
+
+/** Custom **/
+
 body {
 	font-family: "Helvetica", sans-serif;
 	font-size: 12px;
 	margin: 25px;
 	padding: 0;
+}
+
+.width700 {
+	width: 700px;
+}
+
+.nameField {
+	width: 312px;
+}
+
+.panel {
+	background-color: #fff;
+	box-shadow: 0 0 5px rgb( 200, 200, 200 ); 
+}
+
+.form-control {
+	background-color: rgb( 250, 250, 250 );
 }
