@@ -1,3 +1,4 @@
 // Remove from git these files:
 *.DS_Store
 node_modules/
+data.json

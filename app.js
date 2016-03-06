@@ -12,7 +12,8 @@
 var express = require("express"),
 	jade = require("jade"),
 	connect = require("connect"),
-	bodyParser = require("body-parser");
+	bodyParser = require("body-parser"),
+	fs = require("fs");
 
 /** Initialize Express app object **/
 
@@ -53,17 +54,79 @@ app.post("/settings/profile", function postProfileCb (req, res) {
 
 	console.log( "POST RECEIVED!" );
 
-	// report post data to console
+	// Write JSON with POST data
 
-	console.log( req.body );
+	// // Core Node method
 
-	// reply to browser that something has happened and close the loop
+	// // ** Asynchronously ** writes data to a file
 
-	return res.json({
-		"firstName": req.body.firstNameField,
-		"lastName": req.body.lastNameField,
-		"bio": req.body.bioField
+	fs.writeFile("data.json", JSON.stringify( req.body, null, 2 ), function writeCb ( err ) {
+
+		// Error handling
+
+		if ( err ) {
+
+			res.json({ err: true, msg: err.msg });
+
+			return console.log( err );
+
+		}
+
+		// Report to console
+
+		console.log( "Post Data Saved", req.body );
+
+		// reply to browser with a redirect directive
+
+		res.redirect( "/profile" );
+
+		// end writeCb
+
 	});
+
+	// end app.post
+
+});
+
+// GET profile
+
+app.get( "/profile", function profileCb (req, res) {
+	
+	fs.readFile( "data.json", function readCallback ( err, data ) {
+
+		// Error handling
+
+		if ( err ) {
+
+			res.json({ err: true, msg: err.msg });
+
+			return console.log( err );
+
+		}
+
+		// No error, continue
+
+		// Convert JSON string to JavaScript Object
+
+		var profileData = JSON.parse( data );
+
+		// Report to console
+
+		console.log( "Data read from file: ", profileData );
+
+		// Render Jade view, and send data as options
+
+		res.render( "profile", {
+			firstname: profileData.firstNameField,
+			lastname: profileData.lastNameField,
+			bio: profileData.bioField
+		});
+
+		// end readCallback
+
+	});
+
+	// end app.get
 });
 
 app.get( "/someJSON", function someJSONCallback (req, res) {
