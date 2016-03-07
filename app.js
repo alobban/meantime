@@ -12,6 +12,7 @@
 var express = require("express"),
 	jade = require("jade"),
 	connect = require("connect"),
+	multipart = require("connect-multiparty"),
 	bodyParser = require("body-parser"),
 	fs = require("fs");
 
@@ -36,9 +37,21 @@ app.set( "view engine", "jade" );
 
 /** Add middleware that will look for data when requests are made **/
 
+// Parse url encoded variables 
+
 app.use( bodyParser.urlencoded( {extended: true} ));
 
+// Parse files
+
+// WARNING
+
+// See notes  about this middleware on console
+
+app.use( multipart({ uploadDir: root + "/tmp" }));
+
 /** Create some Express routes **/
+
+// Get edit profile
 
 app.get( "/settings/profile", function editProfileCb (req, res) {
 
@@ -50,9 +63,39 @@ app.post("/settings/profile", function postProfileCb (req, res) {
 
 	// this callback is fired after a POST request is sent to the server
 
+	// Get field data
+
+	var data = req.body;
+
 	// report to console
 
-	console.log( "POST RECEIVED!" );
+	console.log( "Fields RECEIVED!", data );
+
+	// ====================
+
+	// You can inspect the req and res objects using console
+	// To see what they contain
+
+	console.log("======== Files: ", req.files );
+
+	// ====================
+
+	// Get file
+
+	if ( req.files.photoField != undefined ) {
+
+		var filePath = req.files.photoField.path;
+
+		var fileName = req.files.photoField.originalFilename;
+
+		console.log( "Image file received: ", filePath );
+
+		finalPath = root + "/public/images/" + fileName;
+
+		fs.renameSync( filePath, finalPath );
+
+		data.photoPath = "images/" + fileName;
+	}
 
 	// Write JSON with POST data
 
@@ -117,6 +160,7 @@ app.get( "/profile", function profileCb (req, res) {
 		// Render Jade view, and send data as options
 
 		res.render( "profile", {
+			photo: profileData.photoPath,
 			firstname: profileData.firstNameField,
 			lastname: profileData.lastNameField,
 			bio: profileData.bioField

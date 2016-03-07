@@ -25,21 +25,36 @@ html
 
 					- // edit profile form
 
-					form( action = "/settings/profile", method = "post" )
+					form( 
+						action = "/settings/profile", 
+						method = "post",
+						enctype = "multipart/form-data" )
+
+						- // photo fields
+
+						div( class = "form-group" )
+
+							div( class = "photoField" )
+
+								label( for = "photoField" ) Photo
+
+								input( type = "file", class = "form-control input-lg", name = "photoField" )
 
 						- // name fields
 
-						div( class = "nameField pull-left" )
+						div( class = "form-group" )
 
-							label( for = "firstNameField" ) First Name
+							div( class = "nameField pull-left" )
 
-							input( type = "text", class = "form-control input-lg", placeholder = "First Name", name = "firstNameField" )
+								label( for = "firstNameField" ) First Name
 
-						div( class = "nameField pull-right" )
+								input( type = "text", class = "form-control input-lg", placeholder = "First Name", name = "firstNameField" )
 
-							label( for = "lastNameField" ) Last Name
+							div( class = "nameField pull-right" )
 
-							input( type = "text", class = "form-control input-lg", placeholder = "Last Name", name = "lastNameField" )
+								label( for = "lastNameField" ) Last Name
+
+								input( type = "text", class = "form-control input-lg", placeholder = "Last Name", name = "lastNameField" )
 
 						div( class = "clearfix" )
 
