@@ -3,4 +3,4 @@
 node_modules/
 data.json
 tmp/*.*
-images/*.*
+images/*
